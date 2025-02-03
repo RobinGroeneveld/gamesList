@@ -10,6 +10,7 @@ internal class Program
     {
         var games_user = new List<string>();
         string choice = null;
+        
 
         while (true)
         {
@@ -20,24 +21,6 @@ internal class Program
             // Laat menu zien
             Opties_game_list.opties();
             string user_input = Console.ReadLine();
-
-            /*
-            Console.WriteLine("Wil je ook een genre toevoegen?");
-            string genre_input = Console.ReadLine();
-
-            if (genre_input == "ja")
-            {
-                Console.WriteLine("welke genre wil je toevoegen?");
-                string genre_input2 = Console.ReadLine();
-
-            }
-            else if (genre_input == "nee")
-            {
-                Console.WriteLine("druk op ENTER om door te gaan");
-                Console.ReadLine();
-                
-            }
-            */
 
             
             switch (user_input)
@@ -76,7 +59,6 @@ internal class Program
 
                 // verwijderen
                 case "3":
-
                     int count = 0;
                     Console.WriteLine("Welke game wil je verwijderen?");
                     foreach (string game in games_user)
@@ -92,13 +74,27 @@ internal class Program
                     int game_delete_user = int.Parse(Console.ReadLine()) - 1;
                     games_user.RemoveAt(game_delete_user);
                     Console.WriteLine($"Deze game is verwijderd uit je libary.");
+                    
                 break;
+                case "4":
+                    Console.WriteLine("Welke games wil je bewerken?");
+                    int count2 = 0;
+                    foreach (string game_change in games_user)
+                    {
+                        count2++;
+                        Console.WriteLine($"{count2}: {game_change}");
+                    }
+                    int games_nieuw = int.Parse(Console.ReadLine()) - 1;
+                    games_change_user = games_user.IndexOf
+
+                    break;
 
                 // exit
                 case "x":
 
                     Console.WriteLine("Houdoe! Tot de volgende keer");
                     System.Environment.Exit(1);
+
 
                 break;
 
@@ -107,7 +103,7 @@ internal class Program
 
                     Console.WriteLine("ongeldige keuze");
                     
-                    break;
+                break;
             }
         }
     }
