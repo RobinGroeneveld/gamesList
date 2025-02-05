@@ -8,7 +8,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        var games_user = new List<string>();
+        var gamesUser = new List<string>();
         string choice = null;
         
 
@@ -31,24 +31,27 @@ internal class Program
                     {
                         Console.WriteLine("welke game wil je toevoegen?");
                         string game = Console.ReadLine();
-                        games_user.Add(game);
+                        gamesUser.Add(game);
                         Console.WriteLine($"Oke {game} hij is toegevoegd aan de lijst!");
-                        Console.WriteLine("wil je nog een game toevoegen?");
+                        Console.WriteLine("wil je nog een game toevoegen? (ja/nee)");
                         choice = Console.ReadLine();
                     } while (choice == "ja");
 
                     Console.WriteLine("Oke deze games zijn er toegevoegd:");
-                    foreach (string game_toegevoegd in games_user)
+                    foreach (string game_toegevoegd in gamesUser)
                     {
                         Console.WriteLine($"{game_toegevoegd}");
                     }
+                    Console.WriteLine("Druk op enter om door te gaan");
+                    Console.ReadLine();
+                    Console.Clear();
                 break;
 
                 // games lijst inzien
                 case "2":
 
                     Console.WriteLine("Hier zijn de games die je hebt toegevoegd:");
-                    foreach (string game in games_user)
+                    foreach (string game in gamesUser)
                     {
                         Console.WriteLine(game);
                     }
@@ -61,7 +64,7 @@ internal class Program
                 case "3":
                     int count = 0;
                     Console.WriteLine("Welke game wil je verwijderen?");
-                    foreach (string game in games_user)
+                    foreach (string game in gamesUser)
                     {
                         count++;
                         Console.WriteLine($"{count}: {game}");
@@ -72,21 +75,26 @@ internal class Program
                     // dus daarom staat -1 erbij
 
                     int game_delete_user = int.Parse(Console.ReadLine()) - 1;
-                    games_user.RemoveAt(game_delete_user);
+                    gamesUser.RemoveAt(game_delete_user);
                     Console.WriteLine($"Deze game is verwijderd uit je libary.");
-                    
+
                 break;
+
                 case "4":
                     Console.WriteLine("Welke games wil je bewerken?");
-                    int count2 = 0;
-                    foreach (string game_change in games_user)
+                    int count_change = 0;
+                    foreach (string game_change in gamesUser)
                     {
-                        count2++;
-                        Console.WriteLine($"{count2}: {game_change}");
+                        count_change++;
+                        Console.WriteLine($"{count_change}: {game_change}");
                     }
-                    int games_nieuw = int.Parse(Console.ReadLine()) - 1;
-                    games_change_user = games_user.IndexOf
 
+                    int games_nieuw = int.Parse(Console.ReadLine()) - 1;
+                    string gameToEdit = gamesUser[games_nieuw];
+                    gamesUser.Remove(games_nieuw)
+
+                    
+                  
                     break;
 
                 // exit
