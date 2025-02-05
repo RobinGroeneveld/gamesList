@@ -14,35 +14,36 @@ internal class Program
 
         while (true)
         {
-            Console.WriteLine("Welkom bij de games library!");
-            Console.WriteLine("Hierin kan je games toevoegen, games verwijderen");
+            Console.WriteLine("Welkom bij de game library!");
+            Console.WriteLine("Hierin kan je games toevoegen, games inzien, games verwijderen en games bewerken");
             Console.WriteLine("Kies een optie\n");
 
             // Laat menu zien
             Opties_game_list.opties();
-            string user_input = Console.ReadLine();
+            string userInput = Console.ReadLine();
 
             
-            switch (user_input)
+            switch (userInput)
             {
                 // Toevoegen
                 case "1":
                     do
                     {
-                        Console.WriteLine("welke game wil je toevoegen?");
+                        Console.WriteLine("Welke game wil je toevoegen?");
                         string game = Console.ReadLine();
                         gamesUser.Add(game);
-                        Console.WriteLine($"Oke {game} hij is toegevoegd aan de lijst!");
-                        Console.WriteLine("wil je nog een game toevoegen? (ja/nee)");
+                        Console.WriteLine($"Oke {game} is toegevoegd aan de lijst!");
+                        Console.WriteLine("Wil je nog een game toevoegen? (ja/nee)");
                         choice = Console.ReadLine();
                     } while (choice == "ja");
 
                     Console.WriteLine("Oke deze games zijn er toegevoegd:");
-                    foreach (string game_toegevoegd in gamesUser)
+
+                    foreach (string gameToegevoegd in gamesUser)
                     {
-                        Console.WriteLine($"{game_toegevoegd}");
+                        Console.WriteLine($"{gameToegevoegd}");
                     }
-                    Console.WriteLine("Druk op enter om door te gaan");
+                    Console.WriteLine("Druk op ENTER om door te gaan");
                     Console.ReadLine();
                     Console.Clear();
                 break;
@@ -50,12 +51,12 @@ internal class Program
                 // games lijst inzien
                 case "2":
 
-                    Console.WriteLine("Hier zijn de games die je hebt toegevoegd:");
+                    Console.WriteLine("Deze games heb je toegevoegd aan jou libary:");
                     foreach (string game in gamesUser)
                     {
                         Console.WriteLine(game);
                     }
-                    Console.WriteLine("Druk op enter om door te gaan");
+                    Console.WriteLine("Druk op ENTER om door te gaan");
                     Console.ReadLine();
                     Console.Clear();
                 break;
@@ -74,28 +75,39 @@ internal class Program
                     // de gebruiker begint bij 1
                     // dus daarom staat -1 erbij
 
-                    int game_delete_user = int.Parse(Console.ReadLine()) - 1;
-                    gamesUser.RemoveAt(game_delete_user);
-                    Console.WriteLine($"Deze game is verwijderd uit je libary.");
+                    int gameDeleteUser = int.Parse(Console.ReadLine()) - 1;
+                    gamesUser.RemoveAt(gameDeleteUser);
+                    string gamesPrint = gamesUser[gameDeleteUser];
+
+                    Console.WriteLine($"Oke deze game is verwijderd uit je libary.");
+                    Console.WriteLine("Druk op ENTER om door te gaan");
+                    Console.ReadLine();
+                    Console.Clear();
 
                 break;
 
+                //bewerken
                 case "4":
                     Console.WriteLine("Welke games wil je bewerken?");
-                    int count_change = 0;
-                    foreach (string game_change in gamesUser)
+                    int countChange = 0;
+                    foreach (string gameChange in gamesUser)
                     {
-                        count_change++;
-                        Console.WriteLine($"{count_change}: {game_change}");
+                        countChange++;
+                        Console.WriteLine($"{countChange}: {gameChange}");
                     }
 
-                    int games_nieuw = int.Parse(Console.ReadLine()) - 1;
-                    string gameToEdit = gamesUser[games_nieuw];
-                    gamesUser.Remove(games_nieuw)
+                    int gamesNew = int.Parse(Console.ReadLine()) - 1;
+                    gamesUser.RemoveAt(gamesNew);
+                    Console.WriteLine("Voer in wat je wilt veranderen");
+                    string gamesNewInput = Console.ReadLine();
+                    gamesUser.Add(gamesNewInput);
 
-                    
-                  
-                    break;
+                    Console.WriteLine($"Je hebt het verandert naar: {gamesNewInput}");
+                    Console.WriteLine("Druk op ENTER om door te gaan");
+                    Console.ReadLine();
+                    Console.Clear();
+
+                break;
 
                 // exit
                 case "x":
@@ -110,7 +122,10 @@ internal class Program
                 default:
 
                     Console.WriteLine("ongeldige keuze");
-                    
+                    Console.WriteLine("Druk op ENTER om door te gaan");
+                    Console.ReadLine();
+                    Console.Clear();
+
                 break;
             }
         }
