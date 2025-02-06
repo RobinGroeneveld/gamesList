@@ -34,7 +34,7 @@ internal class Program
                         gamesUser.Add(game);
                         Console.WriteLine($"Oke {game} is toegevoegd aan de lijst!");
                         Console.WriteLine("Wil je nog een game toevoegen? (ja/nee)");
-                        choice = Console.ReadLine();
+                        choice = Console.ReadLine().ToLower();
                     } while (choice == "ja");
 
                     Console.WriteLine("Oke deze games zijn er toegevoegd:");
@@ -48,7 +48,7 @@ internal class Program
                     Console.Clear();
                 break;
 
-                // games lijst inzien
+                // Games lijst inzien
                 case "2":
 
                     Console.WriteLine("Deze games heb je toegevoegd aan jou libary:");
@@ -61,10 +61,11 @@ internal class Program
                     Console.Clear();
                 break;
 
-                // verwijderen
+                // Verwijderen
                 case "3":
                     int count = 0;
                     Console.WriteLine("Welke game wil je verwijderen?");
+                 
                     foreach (string game in gamesUser)
                     {
                         count++;
@@ -72,12 +73,12 @@ internal class Program
                     }
 
                     // De list index begint bij 0 
-                    // de gebruiker begint bij 1
-                    // dus daarom staat -1 erbij
+                    // De gebruiker begint bij 1
+                    // Dus daarom staat -1 erbij
 
                     int gameDeleteUser = int.Parse(Console.ReadLine()) - 1;
                     gamesUser.RemoveAt(gameDeleteUser);
-                    string gamesPrint = gamesUser[gameDeleteUser];
+                    //String gamesPrint = gamesUser[gameDeleteUser];
 
                     Console.WriteLine($"Oke deze game is verwijderd uit je libary.");
                     Console.WriteLine("Druk op ENTER om door te gaan");
@@ -86,7 +87,7 @@ internal class Program
 
                 break;
 
-                //bewerken
+                //Bewerken
                 case "4":
                     Console.WriteLine("Welke games wil je bewerken?");
                     int countChange = 0;
@@ -96,16 +97,21 @@ internal class Program
                         Console.WriteLine($"{countChange}: {gameChange}");
                     }
 
-                    int gamesNew = int.Parse(Console.ReadLine()) - 1;
-                    gamesUser.RemoveAt(gamesNew);
+                    //De gebruiker begint bij 1
+                    //Hij verwijdert de game wat hij wilt aanpassen
+                    int gamesIndex = int.Parse(Console.ReadLine()) - 1;
+
+                    //Hij vraagt de gebruiker om input
+                    //Hij verandert de gamesIndex naar gamesNewInput
                     Console.WriteLine("Voer in wat je wilt veranderen");
                     string gamesNewInput = Console.ReadLine();
-                    gamesUser.Add(gamesNewInput);
+                    gamesUser[gamesIndex] = gamesNewInput;
 
                     Console.WriteLine($"Je hebt het verandert naar: {gamesNewInput}");
                     Console.WriteLine("Druk op ENTER om door te gaan");
                     Console.ReadLine();
                     Console.Clear();
+                    
 
                 break;
 
