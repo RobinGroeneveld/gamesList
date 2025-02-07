@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Xml.Serialization;
@@ -105,13 +106,37 @@ internal class Program
                     //Hij verandert de gamesIndex naar gamesNewInput
                     Console.WriteLine("Voer in wat je wilt veranderen");
                     string gamesNewInput = Console.ReadLine();
-                    gamesUser[gamesIndex] = gamesNewInput;
 
-                    Console.WriteLine($"Je hebt het verandert naar: {gamesNewInput}");
+                    if (gamesIndex >= gamesUser.Count)
+                    {
+                        Console.WriteLine("ongeldige keuze");
+                    }
+
+                    else
+                    {
+                        gamesUser[gamesIndex] = gamesNewInput;
+                        Console.WriteLine($"Je hebt het verandert naar: {gamesNewInput}");
+                    }
+
                     Console.WriteLine("Druk op ENTER om door te gaan");
                     Console.ReadLine();
                     Console.Clear();
-                    
+
+                    break;
+                case "5":
+
+                    Console.WriteLine("Games worden gesorteerd");
+                    gamesUser.Sort();
+                    Console.WriteLine("Dit is je gesorteerde lijst: ");
+                    foreach(string sortGames in gamesUser)
+                    {
+                        Console.WriteLine(sortGames);
+                    }
+                    Console.WriteLine("Druk op ENTER om door te gaan");
+                    Console.ReadLine();
+                    Console.Clear();
+
+
 
                 break;
 

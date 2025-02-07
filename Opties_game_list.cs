@@ -13,7 +13,8 @@ namespace gameslist
             Console.WriteLine("1. Toevoegen game");
             Console.WriteLine("2. Games inzien");
             Console.WriteLine("3. Games verwijderen");
-            Console.WriteLine("4. games bewerken");
+            Console.WriteLine("4. Games bewerken");
+            Console.WriteLine("5. Games sorteren ");
             Console.WriteLine("Druk op X op het programma af te sluiten");
           
         }
